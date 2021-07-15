@@ -114,7 +114,7 @@ public final class DynamicFilterLoader implements FilterLoader {
             String sName = file.getAbsolutePath();
             if (filterClassLastModified.get(sName) != null
                     && (file.lastModified() != filterClassLastModified.get(sName))) {
-                LOG.debug("reloading filter " + sName);
+                LOG.debug("reloading filter {}", sName);
                 filterRegistry.remove(sName);
             }
             ZuulFilter<?, ?> filter = filterRegistry.get(sName);
@@ -127,7 +127,7 @@ public final class DynamicFilterLoader implements FilterLoader {
                 }
             }
         } catch (Exception e) {
-            LOG.error("Error loading filter! Continuing. file=" + file, e);
+            LOG.error("Error loading filter! Continuing. file={}", file, e);
             return false;
         }
 
